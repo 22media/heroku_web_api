@@ -1,0 +1,11 @@
+{
+    "name": "mcgo/heroku_web_api",
+    "description": "Use the heroku web API from within your PHP application",
+    "authors": [
+        {
+            "name": "Mirko Haaser",
+            "email": "kontakt@mirko-haaser.de"
+        }
+    ],
+    "require": {}
+}
