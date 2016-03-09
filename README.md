@@ -26,7 +26,7 @@ If you do not want to use environment variables are want to communicate with mor
 
 You could use this package from inside your Laravel application as a service provider. Just add a line to your app's config provider array in `config/app.php` like this:
  
- ```
+ ```PHP
    'providers' => [   
      // ...   
      // Heroku Scaling
@@ -37,7 +37,7 @@ You could use this package from inside your Laravel application as a service pro
  
  and to your aliases: 
  
- ```
+ ```PHP
   'aliases' => [
     // ...
     'Heroku'   => McGo\HerokuWebAPIFacade::class,
