@@ -23,13 +23,24 @@ class HerokuWebAPI {
   }
 
   /**
+   * Return the current app name.
+   *
+   * @return bool|string
+   */
+  public function getApp() {
+    return $this->heroku_app;
+  }
+
+  /**
    * Per default this is meant to work with one app, defined in the environment
    * variable.
    *
    * @param $value
+   * @return $this
    */
   public function setApp($value) {
     $this->heroku_app = $value;
+    return $this;
   }
 
   /**
@@ -37,9 +48,11 @@ class HerokuWebAPI {
    * directly and not rely on the environment variables.
    *
    * @param $value
+   * @return $this
    */
   public function setKey($value) {
     $this->heroku_key = $value;
+    return $this;
   }
 
   /**
@@ -47,11 +60,13 @@ class HerokuWebAPI {
    *
    * @param $type
    * @param $size
+   * @return $this
    */
   public function scaleDyno($type, $size) {
     $url = $this->getBaseURL() ."/formation/". $type;
     $payload = ['quantity' => $size];
     $this->client->request('PATCH', $url, ['headers' => $this->getHeader(), 'json' => $payload]);
+    return $this;
   }
 
   /**
@@ -101,6 +116,7 @@ class HerokuWebAPI {
       "Authorization" => $basekey,
     ];
   }
+
 }
 
 class HerokuCredentialsNotSetException extends Exception {}
