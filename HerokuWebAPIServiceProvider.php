@@ -12,7 +12,7 @@ class HerokuWebAPIServiceProvider extends ServiceProvider {
    */
   public function register() {
     $this->app->singleton('heroku', function () {
-      return new HerokuWebAPI();
+      return new HerokuWebAPI($this->app['config']['heroku']);
     });
   }
 }
