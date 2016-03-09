@@ -30,7 +30,7 @@ You could use this package from inside your Laravel application as a service pro
    'providers' => [   
      // ...   
      // Heroku Scaling
-     McGo\HerokuWebAPIServiceProvider::class,
+     McGo\HerokuWebAPI\HerokuWebAPIServiceProvider::class,
      // ...
   ],
  ```
@@ -40,7 +40,7 @@ You could use this package from inside your Laravel application as a service pro
  ```PHP
   'aliases' => [
     // ...
-    'Heroku'   => McGo\HerokuWebAPIFacade::class,
+    'Heroku'   => McGo\HerokuWebAPI\HerokuWebAPIFacade::class,
     // ...
  ```
  Afterwards you could use it everywhere in your app like `Heroku::scaleDyno('worker', 1)` or to show the current size of your dynos in a blade template `Heroku::getDynoSize('web')`
