@@ -1,11 +1,22 @@
 {
-    "name": "mcgo/heroku_web_api",
-    "description": "Use the heroku web API from within your PHP application",
+    "name": "mcgo/heroku-web-api",
+    "description": "Use the Heroku web API from within your PHP application",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mirko Haaser",
             "email": "kontakt@mirko-haaser.de"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "McGo\\HerokuWebAPI\\": ""
+        }
+    },
+    "require": {
+        "illuminate/support": "5.3.*",
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "minimum-stability": "dev"
 }
