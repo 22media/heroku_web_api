@@ -10,7 +10,7 @@ The package could be installed by using composer like this and be used like any 
 composer require mcgo/heroku-web-api
 ```
 
-### Usage
+### Basic usage information
 
 To use the package you need to know your heroku key and the machine readble app name. Both could be fetched from your heroku account page under security. The package uses two methods to setup the credentials for communicating with your heroku app. 
 
@@ -21,6 +21,29 @@ Make sure you have created a environment variable for the app and the key with t
 #### Set credentials manually
 
 If you do not want to use environment variables are want to communicate with more than one app, you could directly set the correct values by using the appropriate methods `setApp()` and `setKey()`. Check the example below.
+ 
+### Usage as Laravel ServiceProvider
+
+You could use this package from inside your Laravel application as a service provider. Just add a line to your app's config provider array in `config/app.php` like this:
+ 
+ ```
+   'providers' => [   
+     // ...   
+     // Heroku Scaling
+     McGo\HerokuWebAPIServiceProvider::class,
+     // ...
+  ],
+ ```
+ 
+ and to your aliases: 
+ 
+ ```
+  'aliases' => [
+    // ...
+    'Heroku'   => McGo\HerokuWebAPIFacade::class,
+    // ...
+ ```
+ Afterwards you could use it everywhere in your app like `Heroku::scaleDyno('worker', 1)` or to show the current size of your dynos in a blade template `Heroku::getDynoSize('web')`
  
 ### Example
  
@@ -45,7 +68,7 @@ try {
   // after newing up the Object. Otherwise it would result in a HerokuCredentialsNotSetException. This is no correct
   // usage and will only work if environment variables are set.
   $wrongusage = new HerokuWebAPI();
-  $wrongusage->scaleDyn('web', 0)->setApp('my-app');
+  $wrongusage->scaleDyno('web', 0)->setApp('my-app');
 
 } catch (HerokuCredentialsNotSetException $e) {
   // The credentials are not set. Either do so by using the environment
