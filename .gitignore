@@ -3,3 +3,4 @@ MAMP_php_error_log_MAMP
 heroku_web_api.iml
 .idea
 composer.lock
+.DS_Store

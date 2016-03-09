@@ -40,7 +40,7 @@ You could use this package from inside your Laravel application as a service pro
  ```PHP
   'aliases' => [
     // ...
-    'Heroku'   => McGo\HerokuWebAPI\HerokuWebAPIFacade::class,
+    'Heroku'   => McGo\HerokuWebAPI\Facade\Heroku::class,
     // ...
  ```
  Afterwards you could use it everywhere in your app like `Heroku::scaleDyno('worker', 1)` or to show the current size of your dynos in a blade template `Heroku::getDynoSize('web')`
